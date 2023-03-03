@@ -2,13 +2,18 @@
  *   Copyright (c) 2023 
  *   All rights reserved.
  */
-import { createStore } from "vuex";
+import { defineStore } from 'pinia'
 
-export default createStore({
+export const useStore = defineStore('store', {
+	id: 'main',
+	state: () => ({
+		count: 0,
+	}),
 	actions: {
-		//actions
 		test() {
-			console.log("test");
+			console.log('test')
 		}
-	}
-});
+	},
+})
+
+

@@ -10,5 +10,8 @@
 
 <script setup>
 import MainLayout from '../layouts/MainLayout.vue';
+import { useStore } from '@/stores/store';
 
+const store = useStore();
+store.test();
 </script>
