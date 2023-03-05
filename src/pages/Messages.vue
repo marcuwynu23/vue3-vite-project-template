@@ -9,11 +9,11 @@
 				<v-col cols="12">
 					<v-card>
 						<v-card-title>
-							<h1 class="display-1">Contact</h1>
+							<h1 class="display-1">Messages</h1>
 						</v-card-title>
 						<v-card-text>
 							<p>
-								{{ store.data }}
+								{{ message }}
 							</p>
 						</v-card-text>
 					</v-card>
@@ -22,31 +22,27 @@
 		</v-container>
 	</MainLayout>
 </template>
-
 <script>
 import MainLayout from '@/layouts/MainLayout.vue';
-import { useStore } from '@/stores/store';
-
 export default {
-	name: 'Contact',
+	name: "Messsage",
 	setup() {
-		const store = useStore();
-		return {
-			store
-		};
+
 	},
 	components: {
 		MainLayout
 	},
+	data: () => ({
+		message: "Hello World",
+	}),
+	methods: {
+
+	},
 	created() {
-		this.store.test();
-		this.store.fetchData();
+
 	},
 	mounted() {
-		setTimeout(() => {
-			console.log(this.store.data)
-		}, 1000);
-	}
 
+	},
 }
 </script>
