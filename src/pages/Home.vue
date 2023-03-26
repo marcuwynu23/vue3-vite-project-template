@@ -26,7 +26,6 @@
 <script>
 import MainLayout from '@/layouts/MainLayout.vue';
 import { useStore } from '@/stores/store';
-
 export default {
 	name: 'Home',
 	setup() {

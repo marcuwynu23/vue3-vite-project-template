@@ -5,8 +5,6 @@
 
 <template>
   <component>
-    <v-scroll-x-transition>
-      <router-view></router-view>
-    </v-scroll-x-transition>
+    <router-view></router-view>
   </component>
 </template>

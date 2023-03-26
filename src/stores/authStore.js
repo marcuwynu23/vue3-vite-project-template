@@ -4,6 +4,7 @@
  */
 import { defineStore } from 'pinia'
 import axios from 'axios'
+import router from './../router';
 
 
 export const useAuthStore = defineStore('authStore', {
@@ -24,7 +25,12 @@ export const useAuthStore = defineStore('authStore', {
 		},
 		async postLoginData(data) {
 			await axios.post('/api/auth/login', data)
-				.then(res => console.log(res))
+				.then(res => {
+					let statusCode = res.status
+					if (statusCode === 200) {
+						router.push('/')
+					}
+				})
 				.catch(err => console.error(err))
 		},
 		async fetchData() {

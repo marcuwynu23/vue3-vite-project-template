@@ -17,7 +17,7 @@ export const useStore = defineStore('store', {
 			console.log('test')
 		},
 		async fetchData() {
-			const res = await axios.get('https://jsonplaceholder.typicode.com/todos/1')
+			const res = await axios.get('/api/test')
 			this.data = res.data
 		}
 	},
