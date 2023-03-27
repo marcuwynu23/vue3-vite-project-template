@@ -3,10 +3,5 @@
  *   All rights reserved.
  */
 <template>
-	<PlainLayout>
-		<h3>Forgot Password</h3>
-	</PlainLayout>
+	<h3>Forgot Password</h3>
 </template>
-<script setup>
-import PlainLayout from '@/layouts/PlainLayout.vue';
-</script>
