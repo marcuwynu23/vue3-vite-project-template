@@ -4,7 +4,7 @@
  */
 import { defineStore } from "pinia";
 import axios from "axios";
-import router from "./../router";
+import router from "@/routes";
 
 export const useAuthStore = defineStore("authStore", {
 	name: "authStore",
