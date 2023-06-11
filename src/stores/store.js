@@ -1,12 +1,12 @@
 /*
- *   Copyright (c) 2023 
+ *   Copyright (c) 2023
  *   All rights reserved.
  */
-import { defineStore } from 'pinia'
-import axios from 'axios'
+import { defineStore } from "pinia";
+import axios from "axios";
 
-export const useStore = defineStore('store', {
-	name: 'store',
+export const useStore = defineStore("store", {
+	name: "store",
 	state: () => ({
 		count: 0,
 		data: null,
@@ -14,13 +14,15 @@ export const useStore = defineStore('store', {
 
 	actions: {
 		test() {
-			console.log('test')
+			console.log("test");
 		},
 		async fetchData() {
-			const res = await axios.get('/api/test')
-			this.data = res.data
-		}
+			try {
+				const res = await axios.get("/api/test");
+				this.data = res.data;
+			} catch (error) {
+				console.error(error);
+			}
+		},
 	},
-})
-
-
+});
