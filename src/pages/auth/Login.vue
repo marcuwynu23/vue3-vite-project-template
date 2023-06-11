@@ -1,5 +1,5 @@
 <script >
-import { useAuthStore } from '@/stores/authStore';
+import { useAuthStore } from '@/stores/auth/auth-store';
 export default {
 	setup() {
 		const authStore = useAuthStore();

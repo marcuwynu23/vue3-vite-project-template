@@ -1,7 +1,32 @@
-/*
- *   Copyright (c) 2023 
- *   All rights reserved.
- */
+<script>
+import { useTheme } from 'vuetify';
+
+export default {
+	setup() {
+		const theme = useTheme();
+		return { theme };
+	},
+	data: () => ({
+		links: [
+			{ text: 'Dashboard', to: '/', icon: 'mdi-view-dashboard' },
+			{ text: 'Messages', to: '/messages', icon: 'mdi-message' },
+			{ text: 'Contact', to: '/contact', icon: 'mdi-account-box' },
+			{ text: 'About', to: '/about', icon: 'mdi-information' },
+		],
+
+		isDark: false,
+	}),
+	methods: {
+		switcher(isDark) {
+			if (isDark) {
+				this.theme.global.name.value = 'dark';
+			} else {
+				this.theme.global.name.value = 'light';
+			}
+		}
+	}
+}
+</script>
 <template>
 	<v-app>
 		<v-app-bar class="px-3"
@@ -36,38 +61,8 @@
 			</v-avatar>
 		</v-app-bar>
 		<v-main>
-			<slot>
-			</slot>
+			<slot />
 		</v-main>
 	</v-app>
 </template>
 
-<script>
-import { useTheme } from 'vuetify';
-
-export default {
-	setup() {
-		const theme = useTheme();
-		return { theme };
-	},
-	data: () => ({
-		links: [
-			{ text: 'Dashboard', to: '/', icon: 'mdi-view-dashboard' },
-			{ text: 'Messages', to: '/messages', icon: 'mdi-message' },
-			{ text: 'Contact', to: '/contact', icon: 'mdi-account-box' },
-			{ text: 'About', to: '/about', icon: 'mdi-information' },
-		],
-
-		isDark: false,
-	}),
-	methods: {
-		switcher(isDark) {
-			if (isDark) {
-				this.theme.global.name.value = 'dark';
-			} else {
-				this.theme.global.name.value = 'light';
-			}
-		}
-	}
-}
-</script>

@@ -1,7 +1,7 @@
-/*
- *   Copyright (c) 2023 
- *   All rights reserved.
- */
+<script>
+import { useAuthStore } from '@/stores/auth/auth-store';
+
+</script>
 <template>
 	<h3>Register</h3>
 </template>

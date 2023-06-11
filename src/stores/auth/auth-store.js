@@ -28,6 +28,10 @@ export const useAuthStore = defineStore("authStore", {
 		async postLoginData(data) {
 			try {
 				console.log(data);
+				if (data.username === "admin" && data.password === "admin") {
+					localStorage.setItem("isAuthenticated", true);
+					router.push("/");
+				}
 				// let response = await axios.post("/api/auth/login", data);
 				// console.log(response.status);
 			} catch (err) {

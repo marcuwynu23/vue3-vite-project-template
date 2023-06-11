@@ -24,5 +24,13 @@ export const useStore = defineStore("store", {
 				console.error(error);
 			}
 		},
+		async logout() {
+			try {
+				localStorage.setItem("isAuthenticated", false);
+				router.push({ name: "login" });
+			} catch (err) {
+				console.error(err);
+			}
+		},
 	},
 });

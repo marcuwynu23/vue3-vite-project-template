@@ -1,16 +1,6 @@
-/*
- *   Copyright (c) 2023 
- *   All rights reserved.
- */
-
-<template>
-  <component>
-    <router-view></router-view>
-  </component>
-</template>
 <script>
-import MainLayout from '@/layouts/MainLayout.vue';
-import BlankLayout from '@/layouts/BlankLayout.vue';
+import MainLayout from '@/layouts/main-layout.vue';
+import BlankLayout from '@/layouts/blank-layout.vue';
 
 export default {
   name: 'App',
@@ -26,3 +16,8 @@ export default {
   }
 };
 </script>
+<template>
+  <component :is="resolveLayout">
+    <router-view></router-view>
+  </component>
+</template>

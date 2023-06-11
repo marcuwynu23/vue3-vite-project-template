@@ -37,11 +37,24 @@ const routes = [
 		component: () => import("@/pages/landing/landing.vue"),
 		meta: { layout: "blank" },
 	},
-	{ path: "/", component: () => import("@/pages/home.vue") },
-	{ path: "/about", component: () => import("@/pages/about.vue") },
-	{ path: "/messages", component: () => import("@/pages/messages.vue") },
-	{ path: "/contact", component: () => import("@/pages/contact.vue") },
+	{ name: "home", path: "/", component: () => import("@/pages/home.vue") },
 	{
+		name: "about",
+		path: "/about",
+		component: () => import("@/pages/about.vue"),
+	},
+	{
+		name: "message",
+		path: "/messages",
+		component: () => import("@/pages/messages.vue"),
+	},
+	{
+		name: "contact",
+		path: "/contact",
+		component: () => import("@/pages/contact.vue"),
+	},
+	{
+		name: "not-found",
 		path: "/:pathMatch(.*)*",
 		component: () => import("@/pages/errors/404.vue"),
 	},
@@ -62,7 +75,7 @@ let publicRoutes = [
 
 // route guard
 router.beforeEach((to, from, next) => {
-	let isAuthenticated = localStorage.getItem("user") !== null;
+	let isAuthenticated = localStorage.getItem("isAuthenticated");
 	if (!publicRoutes.includes(to.name) && !isAuthenticated) {
 		next({ name: "login" });
 	} else {

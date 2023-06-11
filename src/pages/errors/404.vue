@@ -1,9 +1,5 @@
-/*
- *   Copyright (c) 2023 
- *   All rights reserved.
- */
 <template>
-	<div>
-		error 404
+	<div class="flex justify-center">
+		<p>error 404</p>
 	</div>
 </template>
