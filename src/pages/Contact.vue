@@ -1,4 +1,3 @@
-
 <script>
 import { useStore } from '@/stores/store';
 
@@ -31,7 +30,7 @@ export default {
 						<h1 class="display-1">Contact</h1>
 					</v-card-title>
 					<v-card-text>
-						<p>
+						<p>ssssss
 							{{ store.data }}
 						</p>
 					</v-card-text>
