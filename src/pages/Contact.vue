@@ -1,25 +1,12 @@
-<script>
-import { useStore } from '@/stores/store';
+<script setup>
+import { onMounted } from "vue";
+import { useStore } from "@/stores/store";
+const store = useStore();
 
-export default {
-	name: 'Contact',
-	setup() {
-		const store = useStore();
-		return {
-			store
-		};
-	},
-	created() {
-		this.store.test();
-		this.store.fetchData();
-	},
-	mounted() {
-		setTimeout(() => {
-			console.log(this.store.data)
-		}, 1000);
-	}
-
-}
+onMounted(() => {
+	store.test();
+	store.fetchData();
+});
 </script>
 <template>
 	<v-container>
@@ -30,7 +17,8 @@ export default {
 						<h1 class="display-1">Contact</h1>
 					</v-card-title>
 					<v-card-text>
-						<p>ssssss
+						<p>
+							ssssss
 							{{ store.data }}
 						</p>
 					</v-card-text>

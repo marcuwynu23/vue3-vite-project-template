@@ -1,68 +1,61 @@
-<script>
-import { useTheme } from 'vuetify';
+<script setup>
+import { ref } from "vue";
+import { useTheme } from "vuetify";
+import { useAuthStore } from "@/stores/auth/auth-store";
+// State for drawer and rail mode
+const drawer = ref(false); // Initially closed
+const rail = ref(false); // Initially full-width
+const theme = useTheme();
+const authStore = useAuthStore();
 
-export default {
-	setup() {
-		const theme = useTheme();
-		return { theme };
-	},
-	data: () => ({
-		links: [
-			{ text: 'Dashboard', to: '/', icon: 'mdi-view-dashboard' },
-			{ text: 'Messages', to: '/messages', icon: 'mdi-message' },
-			{ text: 'Contact', to: '/contact', icon: 'mdi-account-box' },
-			{ text: 'About', to: '/about', icon: 'mdi-information' },
-		],
+// Links for the navigation drawer
+const links = ref([
+	{ text: "Home", to: "/", icon: "mdi-view-dashboard" },
+	{ text: "About", to: "/about", icon: "mdi-briefcase" },
+	{ text: "Contact", to: "/contact", icon: "mdi-account-box" },
+]);
 
-		isDark: false,
-	}),
-	methods: {
-		switcher(isDark) {
-			if (isDark) {
-				this.theme.global.name.value = 'dark';
-			} else {
-				this.theme.global.name.value = 'light';
-			}
-		}
-	}
+async function handleLogout() {
+	await authStore.logout();
 }
 </script>
+
 <template>
 	<v-app>
-		<v-app-bar class="px-3"
-			color="primary"
-			elevation="0">
-			<v-app-bar-title>
-				<span>Vite+Vue Frontent Project Template</span>
-			</v-app-bar-title>
+		<v-navigation-drawer
+			app
+			color="secondary"
+			v-model="drawer"
+			:rail="rail"
+			temporary
+			style="border: none"
+			elevation="4"
+			@click="rail = false"
+		>
+			<v-btn icon="mdi-chevron-left" variant="text" @click.stop="rail = !rail"></v-btn>
 
-			<v-spacer></v-spacer>
-			<v-tabs color="grey-darken-2">
-				<v-tab v-for="link in links"
+			<v-list density="compact" nav>
+				<v-list-item
+					v-for="link in links"
 					:key="link.text"
 					:to="link.to"
-					large
-					:prepend-icon="link.icon">
-					{{ link.text }}
-				</v-tab>
-			</v-tabs>
+					:prepend-icon="link.icon"
+					nav
+				>
+					<template #title v-if="!rail">
+						{{ link.text }}
+					</template>
+				</v-list-item>
 
-			<div class="mx-3">
-				<span>
-					<v-switch v-model="isDark"
-						@change="switcher(isDark)"
-						color="white"
-						:label="isDark ? 'Dark Mode' : 'Light Mode'"
-						hide-details />
-				</span>
-			</div>
-			<v-avatar size="36">
-				<v-img src="https://avatars.githubusercontent.com/u/61897063?v=4" />
-			</v-avatar>
-		</v-app-bar>
+				<v-list-item @click="handleLogout" prepend-icon="mdi-logout">
+					<template #title> Logout </template></v-list-item
+				>
+			</v-list>
+		</v-navigation-drawer>
+
 		<v-main>
+			<v-btn icon="mdi-menu" variant="text" @click="drawer = !drawer"></v-btn>
 			<slot />
 		</v-main>
 	</v-app>
 </template>
-

@@ -32,17 +32,21 @@ export const useAuthStore = defineStore("authStore", {
 					localStorage.setItem("isAuthenticated", true);
 					router.push("/");
 				}
-				// let response = await axios.post("/api/auth/login", data);
-				// console.log(response.status);
+			} catch (err) {
+				console.error(err);
+			}
+		},
+		async logout() {
+			try {
+				localStorage.setItem("isAuthenticated", false);
+				router.push({ name: "login" });
 			} catch (err) {
 				console.error(err);
 			}
 		},
 		async fetchData() {
 			try {
-				const response = await axios.get(
-					"https://jsonplaceholder.typicode.com/todos/1"
-				);
+				const response = await axios.get("https://jsonplaceholder.typicode.com/todos/1");
 				this.data = response.data;
 			} catch (err) {
 				console.log(err);

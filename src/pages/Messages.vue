@@ -1,22 +1,7 @@
-<script>
-export default {
-	name: "Messsage",
-	setup() {
+<script setup>
+import { onMounted, ref } from "vue";
 
-	},
-	data: () => ({
-		message: "Hello World",
-	}),
-	methods: {
-
-	},
-	created() {
-
-	},
-	mounted() {
-
-	},
-}
+const message = ref("Hello World");
 </script>
 <template>
 	<v-container>

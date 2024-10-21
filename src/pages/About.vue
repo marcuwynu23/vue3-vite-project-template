@@ -1,7 +1,15 @@
-/*
- *   Copyright (c) 2023 
- *   All rights reserved.
- */
+<script setup>
+import { onMounted } from "vue";
+import { useStore } from "@/stores/store";
+const store = useStore();
+
+onMounted(() => {
+	store.test();
+	store.fetchData();
+	console.log("About created");
+});
+</script>
+
 <template>
 	<v-container>
 		<v-row>
@@ -20,29 +28,3 @@
 		</v-row>
 	</v-container>
 </template>
-<script>
-import { useStore } from '@/stores/store';
-
-export default {
-	name: 'About',
-	setup() {
-		const store = useStore();
-		return {
-			store
-		};
-	},
-	created() {
-		this.store.test();
-		this.store.fetchData();
-		console.log('About created');
-	},
-	mounted() {
-		setTimeout(() => {
-			console.log(this.store.data)
-		}, 1000);
-		console.log('About mounted');
-	}
-
-}
-
-</script>
