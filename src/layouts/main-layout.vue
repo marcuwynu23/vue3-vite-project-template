@@ -10,7 +10,8 @@ const authStore = useAuthStore();
 
 // Links for the navigation drawer
 const links = ref([
-	{ text: "Home", to: "/", icon: "mdi-view-dashboard" },
+	{ text: "Profile", to: "/profile", icon: "mdi-account" },
+	{ text: "Dashboard", to: "/", icon: "mdi-view-dashboard" },
 	{ text: "About", to: "/about", icon: "mdi-briefcase" },
 	{ text: "Contact", to: "/contact", icon: "mdi-account-box" },
 ]);
@@ -54,8 +55,37 @@ async function handleLogout() {
 		</v-navigation-drawer>
 
 		<v-main>
-			<v-btn icon="mdi-menu" variant="text" @click="drawer = !drawer"></v-btn>
-			<slot />
+			<v-toolbar color="secondary" dark prominent>
+				<v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
+
+				<v-toolbar-title>
+					<h1 class="font-weight-bold">Aninaw Cloud</h1>
+				</v-toolbar-title>
+
+				<v-spacer></v-spacer>
+			</v-toolbar>
+			<v-container>
+				<slot />
+			</v-container>
+
+			<v-bottom-navigation>
+				<v-btn value="recent">
+					<v-icon color="secondary">mdi-history</v-icon>
+					<span>Recent</span>
+				</v-btn>
+
+				<v-btn value="favorites">
+					<v-icon color="secondary">mdi-heart</v-icon>
+
+					<span>Favorites</span>
+				</v-btn>
+
+				<v-btn value="nearby">
+					<v-icon color="secondary">mdi-map-marker</v-icon>
+
+					<span>Nearby</span>
+				</v-btn>
+			</v-bottom-navigation>
 		</v-main>
 	</v-app>
 </template>
