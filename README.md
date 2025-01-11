@@ -9,7 +9,6 @@
   <img src="https://img.shields.io/github/license/marcuwynu23/vue3-vite-project-template.svg" alt="License Badge"/>
 </p>
 
-
 This is a minimalistic and standardized project template for Vue.js version 3, built with Vite.
 ## Features
 
