@@ -11,7 +11,6 @@
 
 
 This is a minimalistic and standardized project template for Vue.js version 3, built with Vite.
-
 ## Features
 
 - **Vue.js 3:** Harness the power of the latest Vue.js version.
